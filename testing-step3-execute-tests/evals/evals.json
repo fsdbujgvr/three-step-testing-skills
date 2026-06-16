@@ -1,0 +1,25 @@
+{
+  "skill_name": "testing-step3-execute-tests",
+  "note": "触发力 eval：should_trigger=true 的应触发本 skill；should_trigger=false 的 near-miss 应被相邻 skill(step1/step2/doc-conformance) 或普通编码接走，验证本 skill 不越界、不与 step2 抢。用 skill-creator 的 description-improver/触发 eval 跑。",
+  "evals": [
+    {"id": 1, "prompt": "把第二步写好的这套测试用例跑一遍，出一份测试报告", "should_trigger": true, "expected_output": "触发 step3；按用例集逐条真实执行(四通道)，产出对齐官方格式的测试报告+缺陷台账", "files": []},
+    {"id": 2, "prompt": "对登录、越权这些接口真的发请求、查数据库验证一下，别只看代码", "should_trigger": true, "expected_output": "触发 step3；接口真发请求(三态)+DB写后回读，API 类必须真跑不接受源码佐证", "files": []},
+    {"id": 3, "prompt": "按官方的测试记录单实测一遍，要图文并茂", "should_trigger": true, "expected_output": "触发 step3；逐条执行+截图，官方记录单 1:1 对照，面4 文档符合性浏览器图文并茂", "files": []},
+    {"id": 4, "prompt": "run the test cases against the running app and report the results with screenshots", "should_trigger": true, "expected_output": "trigger step3; execute via browser/API/DB, produce report with evidence screenshots", "files": []},
+    {"id": 5, "prompt": "执行这批用例，写操作要写后回读确认真入库", "should_trigger": true, "expected_output": "触发 step3；写后回读铁律验证真落库 vs 前端态", "files": []},
+    {"id": 6, "prompt": "把用例单里每条 UI 操作在浏览器跑一遍、配上截图说明位置", "should_trigger": true, "expected_output": "触发 step3；UI 面运行前先问范围(全跑/部分)，真跑配专属截图", "files": []},
+    {"id": 7, "prompt": "复现一下这些越权和无鉴权的缺陷，出缺陷台账", "should_trigger": true, "expected_output": "触发 step3；真发匿名/越权请求复现缺陷(非只读代码)，登记分级缺陷台账", "files": []},
+    {"id": 8, "prompt": "三步走的第三步，执行测试", "should_trigger": true, "expected_output": "触发 step3；执行第②步用例集并出报告", "files": []},
+    {"id": 9, "prompt": "我有一份测试用例文档，帮我对这个部署好的系统实测并验证持久化", "should_trigger": true, "expected_output": "触发 step3；执行+端到端写后回读+DB回读", "files": []},
+    {"id": 10, "prompt": "图文并茂出测试报告，按测试记录单样式逐条记录实际结果", "should_trigger": true, "expected_output": "触发 step3；密集表+截图+对齐官方记录单格式", "files": []},
+
+    {"id": 11, "prompt": "帮我再补几条边界和异常的测试用例", "should_trigger": false, "expected_output": "应被 testing-step2-write-testcases 接走(编写用例,非执行)", "files": []},
+    {"id": 12, "prompt": "先把这个系统的功能和接口都搞清楚再说", "should_trigger": false, "expected_output": "应被 testing-step1-understand-project 接走(理解项目)", "files": []},
+    {"id": 13, "prompt": "把技术要求文档逐条核一下实现没有", "should_trigger": false, "expected_output": "应被 testing-step2-doc-conformance 接走(代码+网页判定有/无,非执行带截图)", "files": []},
+    {"id": 14, "prompt": "给这个系统写一套全面的测试用例", "should_trigger": false, "expected_output": "应被 testing-step2-write-testcases 接走", "files": []},
+    {"id": 15, "prompt": "给这个函数写个 jest 单元测试", "should_trigger": false, "expected_output": "普通编码任务,不触发测试三步走 skill", "files": []},
+    {"id": 16, "prompt": "这段代码为什么有 bug，帮我调一下", "should_trigger": false, "expected_output": "普通调试,不触发本 skill", "files": []},
+    {"id": 17, "prompt": "我的测试用例还缺哪些维度没覆盖", "should_trigger": false, "expected_output": "覆盖性分析属 step2(编写/审计用例),非执行", "files": []},
+    {"id": 18, "prompt": "理解一下这个项目的架构和数据流", "should_trigger": false, "expected_output": "应被 testing-step1-understand-project 接走", "files": []}
+  ]
+}

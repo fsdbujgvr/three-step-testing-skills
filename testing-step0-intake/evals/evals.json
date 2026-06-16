@@ -1,0 +1,77 @@
+{
+  "skill_name": "testing-step0-intake",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我把 docker-compose 和需求文档丢给你了，你看看信息够不够测这个系统，不够的再问我。",
+      "expected_output": "触发 step0：读用户丢的文件 + 主动扫项目自动发现 URL/账号/DB指向/文档/源码，评估充分性，就缺口与危险项(尤其DB连哪)精准追问，产出项目信息确认卡。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "准备测一个新系统，先帮我把测试要用到的信息（地址、账号、数据库、文档这些）确认清楚再开始。",
+      "expected_output": "触发 step0：收集并核实 6 字段 + 危险三项确认，过完成度闸门后才进第①步。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "你先扫一下这个项目，看看要做测试的话还缺哪些信息。",
+      "expected_output": "触发 step0：主动扫 README/compose/.env/源码/文档，汇报已发现 + 列缺口，不让用户先填表。",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "开始测这个项目吧。",
+      "expected_output": "触发 step0（或先建议走 step0）：因为还没确认 URL/账号/DB/文档等输入，先收集确认再进第①步。",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "测试之前，帮我确认下这个系统连的数据库是本地还是公司那个远程库，别测到生产上去了。",
+      "expected_output": "触发 step0：核实 DATABASE_URL/网关判断 DB 指向(本地 vs 远程/生产)，作为危险项确认，必要时建议切本地副本。",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "把这个项目完整理解一遍，所有功能接口权限都摸清楚。",
+      "expected_output": "不应触发 step0；应触发 testing-step1-understand-project（这是第①步深入理解，不是第0步信息接案）。",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "给这个系统写一套全面的测试用例。",
+      "expected_output": "不应触发 step0；应触发 testing-step2-write-testcases。",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "把第二步的用例跑一遍，图文并茂出测试报告。",
+      "expected_output": "不应触发 step0；应触发 testing-step3-execute-tests。",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "技术要求文档里写的功能逐条核一下代码到底实现没有。",
+      "expected_output": "不应触发 step0；应触发 testing-step2-doc-conformance。",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "这个 docker-compose 里映射的那个端口是干嘛的？",
+      "expected_output": "不应触发 step0；这是单纯的配置问题、不是要开始测试或确认测试前置信息，直接回答即可。",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "我新开了个对话，这个项目之前测了一半断了，现在测到哪了、从哪继续？",
+      "expected_output": "触发 step0（总管/续跑模式）：扫 测试产出/ 各步产出与完成信号，读《进度总览》定位续跑点，报告进度并路由到该继续的那一步。",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "接着上次继续把这个系统测下去。",
+      "expected_output": "触发 step0（总管/续跑模式）：先扫进度定位'上次跑到哪'，再据续跑点路由到对应步骤继续，而不是盲目从头或瞎猜。",
+      "files": []
+    }
+  ]
+}
